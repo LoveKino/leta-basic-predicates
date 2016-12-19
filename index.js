@@ -12,6 +12,7 @@ let math = require('./src/math');
 let relation = require('./src/relation');
 let control = require('./src/control');
 let string = require('./src/string');
+let func = require('./src/function');
 
 module.exports = reduce([
     tuple,
@@ -21,5 +22,6 @@ module.exports = reduce([
     math,
     relation,
     control,
-    string
+    string,
+    func
 ], mergeMap, {});
