@@ -5,11 +5,11 @@ let {
 } = require('bolzano');
 
 let {
-    isFunction
+    isFunction, likeArray, funType, isObject, isString
 } = require('basetype');
 
 module.exports = {
-    apply: (obj, funName, args) => {
+    apply: funType((obj, funName, args) => {
         let fun = get(obj, funName);
         if (!isFunction(fun)) {
             throw new Error(`${fun} is not a function. get(${obj}, ${funName})`);
@@ -20,5 +20,9 @@ module.exports = {
         let ctx = get(obj, parts.join('.'));
 
         return fun.apply(ctx, args);
-    }
+    }, [
+        isObject,
+        isString,
+        likeArray
+    ])
 };
